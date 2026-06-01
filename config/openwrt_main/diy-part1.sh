@@ -1,14 +1,6 @@
 #!/bin/bash
-#========================================================================================================================
-# https://github.com/ophub/amlogic-s9xxx-openwrt
-# Description: Automatically Build OpenWrt
-# Function: DIY script (Before updating feeds — modify the default IP, hostname, theme, add/remove packages, etc.)
-# Source code repository: https://github.com/openwrt/openwrt / Branch: main
-#========================================================================================================================
+set -e
 
-# Add a custom feed source
-# sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-
-# Remove unnecessary packages
-# rm -rf package/utils/{ucode,fbtest}
-
+# 这里通常用于修改 feeds.conf.default。
+# 对当前方案，保持官方 feeds 即可。
+echo "diy-part1: keep default feeds"

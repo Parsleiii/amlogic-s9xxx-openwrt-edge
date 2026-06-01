@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Hostname
+uci set system.@system[0].hostname='n1-edge'
+
+# Timezone: 国内可用 Asia/Shanghai；你也可以改成 Asia/Dubai
+uci set system.@system[0].zonename='Asia/Shanghai'
+uci set system.@system[0].timezone='CST-8'
+
+# Single Ethernet as DHCP client under main router
+uci set network.lan.proto='static'
+uci set network.lan.ipaddr='192.168.1.48'
+uci set network.lan.netmask='255.255.255.0'
+uci set network.lan.gateway='192.168.1.1'
+uci set network.lan.dns='192.168.1.1 223.5.5.5'
+uci commit network
+
+# Disable DHCP server on N1
+uci -q set dhcp.lan.ignore='1'
+uci commit dhcp
+
+# Keep SSH enabled
+/etc/init.d/dropbear enable
+
+# Docker is installed but do not force-enable until storage path is prepared
+/etc/init.d/dockerd disable 2>/dev/null || true
+
+exit 0
