@@ -145,3 +145,8 @@ CONFIG_PACKAGE_luci-ssl=y
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=y
 CONFIG_PACKAGE_luci-app-amlogic=y
 CONFIG_PACKAGE_luci-i18n-amlogic-zh-cn=y
+
+# ---------- Package manager ----------
+# Use OPKG instead of APK for compatibility with traditional OpenWrt/N1 scripts
+# CONFIG_USE_APK is not set
+CONFIG_PACKAGE_opkg=y
